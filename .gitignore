@@ -1,0 +1,11 @@
+odoo/
+venv/
+__pycache__/
+*.pyc
+docker/.env
+.vscode/
+.idea/
+.DS_Store
+*.log
+.env
+.odoo-conf

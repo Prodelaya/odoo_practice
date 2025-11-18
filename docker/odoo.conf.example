@@ -1,0 +1,16 @@
+# Database configuration
+db_host = your_host
+db_port = 5432
+db_user = your_user
+db_password = your_password
+db_name = your_name
+
+# Security
+admin_passwd = password
+
+# Addons path
+addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
+
+# Data and Logging
+data_dir = /var/lib/odoo
+log_level = info
