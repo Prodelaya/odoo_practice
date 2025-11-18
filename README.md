@@ -132,7 +132,7 @@ cd docker
 docker compose up -d
 ~~~
 
-Cuando todo esté en marcha, abre:  
+Cuando todo esté en marcha, abre:
 **http://localhost:8069**
 
 - Crea una **base de datos** (por ejemplo `odoo_db`).
@@ -142,7 +142,7 @@ Cuando todo esté en marcha, abre:
 ---
 
 ## Verificación rápida
-1. En Odoo, **Ajustes → Activar Modo Desarrollador**.  
+1. En Odoo, **Ajustes → Activar Modo Desarrollador**.
 2. **Ajustes → Técnico → Parámetros → Rutas de addons**:
    - Debes ver **dos rutas**:
      - `/usr/lib/python3/dist-packages/odoo/addons`
@@ -181,7 +181,7 @@ docker compose down -v
 
 ## Solución de problemas
 
-**No veo `/mnt/extra-addons` en “Rutas de addons”**  
+**No veo `/mnt/extra-addons` en “Rutas de addons”**
 - Verifica que `odoo.conf` tiene:
   ~~~ini
   addons_path = /usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
@@ -189,17 +189,17 @@ docker compose down -v
 - Confirma que el **compose** monta tu `custom_addons/` → `/mnt/extra-addons`.
 - Comprueba que **`odoo.conf` está montado** en `/etc/odoo/odoo.conf`.
 
-**Odoo no conecta con la base**  
+**Odoo no conecta con la base**
 - En `odoo.conf`: `db_host = db`, `db_user`, `db_password` y puerto `5432`.
 - En `.env`: `POSTGRES_USER/POSTGRES_PASSWORD/POSTGRES_DB` coherentes.
 - Revisa `docker compose logs -f db`.
 
-**El módulo no aparece en Apps**  
+**El módulo no aparece en Apps**
 - Pulsa **“Actualizar lista de aplicaciones”**.
 - Asegúrate de que el módulo tiene **`__manifest__.py`** y nombre de carpeta correcto.
 - Mira logs de Odoo por errores de carga.
 
-**Contraseñas con caracteres no ASCII**  
+**Contraseñas con caracteres no ASCII**
 - Si ves errores raros de autenticación/codificación, prueba temporalmente una contraseña ASCII.
 
 ---

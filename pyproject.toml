@@ -1,0 +1,12 @@
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+select = ["E","F","I","UP"]  # pep8, errores, imports, modernizaciones
+fix = true
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_addons"]
