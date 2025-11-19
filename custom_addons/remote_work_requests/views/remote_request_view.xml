@@ -1,4 +1,18 @@
 <odoo>
+
+    <!-- Acción para las solicitudes de trabajo remoto -->
+    <record id="action_remote_requests" model="ir.actions.act_window">
+    <field name="name">Solicitudes</field>
+    <field name="res_model">remote.work.request</field>
+    <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="menu_remote_root" name="Trabajo Remoto"/>
+    <menuitem id="menu_remote_requests" parent="menu_remote_root" name="Solicitudes" action="action_remote_requests"/>
+
+
+    <!-- Vista de formulario -->
     <record id="view_remote_request_form" model="ir.ui.view">
         <field name="name">remote.request.form</field>
         <field name="model">remote.work.request</field>
@@ -8,19 +22,33 @@
                     <group>
                         <field name="name"/>
                         <field name="employee_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="reason"/>
+                        <field name="days_count" readonly="1"/>
+                        <field name="state" readonly="1"/>
+                        <field name="resolution_date" readonly="1"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="action_remote_requests" model="ir.actions.act_window">
-        <field name="name">Solicitudes</field>
-        <field name="res_model">remote.work.request</field>
-        <field name="view_mode">tree,form</field>
+    <!-- Vista de lista (lista desde la versión 18, antes era árbol) -->
+    <record id="view_remote_request_list" model="ir.ui.view">
+        <field name="name">remote.request.list</field>
+        <field name="model">remote.work.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="request_date"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="days_count"/>
+                <field name="state"/>
+                <field name="approver_id"/>
+            </list>
+        </field>
     </record>
-
-    <menuitem id="menu_remote_root" name="Trabajo Remoto"/>
-    <menuitem id="menu_remote_requests" parent="menu_remote_root" name="Solicitudes" action="action_remote_requests"/>
 
 </odoo>

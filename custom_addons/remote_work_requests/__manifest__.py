@@ -5,7 +5,8 @@
     "author": "Pablo",
     "category": "Human Resources",
     "summary": "Gestión de solicitudes de trabajo en remoto",
-    "depends": ["base"],
+    "icon": "remote_work_requests/static/description/icon.png",
+    "depends": ["base", "hr"],
     "data": [
         "views/remote_request_view.xml",
     ],
