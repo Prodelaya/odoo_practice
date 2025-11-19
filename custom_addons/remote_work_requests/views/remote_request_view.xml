@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_remote_request_form" model="ir.ui.view">
+        <field name="name">remote.request.form</field>
+        <field name="model">remote.work.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="employee_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_remote_root" name="Trabajo Remoto"/>
+    <menuitem id="menu_remote_requests" parent="menu_remote_root" name="Solicitudes" action="action_remote_requests"/>
+
+    <record id="action_remote_requests" model="ir.actions.act_window">
+        <field name="name">Solicitudes</field>
+        <field name="res_model">remote.work.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

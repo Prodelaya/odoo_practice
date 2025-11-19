@@ -8,5 +8,5 @@ docker/.env
 .DS_Store
 *.log
 .env
-.odoo-conf
 docker/odoo.conf
+.ruff_cache/
