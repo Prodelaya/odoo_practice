@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import _, api, fields, models  # noqa: I001
 from odoo.exceptions import ValidationError
 
 
