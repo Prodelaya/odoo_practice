@@ -10,6 +10,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/hr_demo.xml",
+        "data/remote_request_demo.xml",
         "views/remote_request_view.xml",
     ],
     "application": True,

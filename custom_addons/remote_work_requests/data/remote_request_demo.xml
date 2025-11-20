@@ -1,0 +1,78 @@
+<odoo>
+
+    <!-- 1. Ventas - Borrador -->
+    <record id="remote_request_demo_ventas_draft" model="remote.work.request">
+        <field name="name">Solicitud Ventas — Borrador</field>
+        <field name="employee_id" ref="employee_sales"/>
+        <field name="approver_id" ref="user_manager_sales"/>
+        <field name="request_date">2024-11-20</field>
+        <field name="date_start">2024-11-25</field>
+        <field name="date_end">2024-11-25</field>
+        <field name="reason">Teletrabajo por visita médica</field>
+        <field name="state">draft</field>
+    </record>
+
+    <!-- 2. Ventas — En Revisión -->
+    <record id="remote_request_demo_ventas_review" model="remote.work.request">
+        <field name="name">Solicitud Ventas — En revisión</field>
+        <field name="employee_id" ref="employee_sales"/>
+        <field name="approver_id" ref="user_manager_sales"/>
+        <field name="request_date">2024-11-15</field>
+        <field name="date_start">2024-11-28</field>
+        <field name="date_end">2024-11-29</field>
+        <field name="reason">Teletrabajo por proyecto con cliente remoto</field>
+        <field name="state">in_review</field>
+    </record>
+
+    <!-- 3. Almacén — En Revisión -->
+    <record id="remote_request_demo_almacen_review" model="remote.work.request">
+        <field name="name">Solicitud Almacén — En revisión</field>
+        <field name="employee_id" ref="employee_warehouse"/>
+        <field name="approver_id" ref="user_manager_warehouse"/>
+        <field name="request_date">2024-11-10</field>
+        <field name="date_start">2024-11-22</field>
+        <field name="date_end">2024-11-24</field>
+        <field name="reason">Teletrabajo por inventario remoto</field>
+        <field name="state">in_review</field>
+    </record>
+
+    <!-- 4. Almacén — Rechazada -->
+    <record id="remote_request_demo_almacen_rejected" model="remote.work.request">
+        <field name="name">Solicitud Almacén — Rechazada</field>
+        <field name="employee_id" ref="employee_warehouse"/>
+        <field name="approver_id" ref="user_manager_warehouse"/>
+        <field name="request_date">2024-11-05</field>
+        <field name="date_start">2024-11-18</field>
+        <field name="date_end">2024-11-19</field>
+        <field name="reason">Solicitud sin justificación suficiente</field>
+        <field name="resolution_date">2024-11-06</field>
+        <field name="state">rejected</field>
+    </record>
+
+    <!-- 5. Instalaciones — Aprobada -->
+    <record id="remote_request_demo_installations_approved1" model="remote.work.request">
+        <field name="name">Solicitud Instalaciones — Aprobada</field>
+        <field name="employee_id" ref="employee_installations"/>
+        <field name="approver_id" ref="user_manager_installations"/>
+        <field name="request_date">2024-10-01</field>
+        <field name="date_start">2024-10-10</field>
+        <field name="date_end">2024-10-11</field>
+        <field name="reason">Teletrabajo por revisión de instalaciones vía videollamada</field>
+        <field name="resolution_date">2024-10-02</field>
+        <field name="state">approved</field>
+    </record>
+
+    <!-- 6. Instalaciones — Aprobada (varios días) -->
+    <record id="remote_request_demo_installations_approved2" model="remote.work.request">
+        <field name="name">Solicitud Instalaciones — Aprobada (Larga)</field>
+        <field name="employee_id" ref="employee_installations"/>
+        <field name="approver_id" ref="user_manager_installations"/>
+        <field name="request_date">2024-09-20</field>
+        <field name="date_start">2024-09-25</field>
+        <field name="date_end">2024-09-30</field>
+        <field name="reason">Teletrabajo por formación técnica extensa</field>
+        <field name="resolution_date">2024-09-21</field>
+        <field name="state">approved</field>
+    </record>
+
+</odoo>
