@@ -1,0 +1,89 @@
+<odoo>
+    <!-- Departamentos demo para pruebas de teletrabajo -->
+
+    <record id="dept_sales" model="hr.department">
+        <field name="name">Ventas</field>
+    </record>
+
+    <record id="dept_warehouse" model="hr.department">
+        <field name="name">Almacén</field>
+    </record>
+
+    <record id="dept_installations" model="hr.department">
+        <field name="name">Instalaciones</field>
+    </record>
+
+    <!--Managers demo para pruebas de teletrabajo-->
+
+    <record id="user_manager_sales" model="res.users">
+        <field name="name">Manager Ventas</field>
+        <field name="login">manager.ventas@example.com</field>
+    </record>
+
+    <record id="employee_manager_sales" model="hr.employee">
+        <field name="name">Manager Ventas</field>
+        <field name="user_id" ref="user_manager_sales"/>
+        <field name="department_id" ref="dept_sales"/>
+    </record>
+
+    <record id="user_manager_warehouse" model="res.users">
+        <field name="name">Manager Almacén</field>
+        <field name="login">manager.almacen@example.com</field>
+    </record>
+
+    <record id="employee_manager_warehouse" model="hr.employee">
+        <field name="name">Manager Almacén</field>
+        <field name="user_id" ref="user_manager_warehouse"/>
+        <field name="department_id" ref="dept_warehouse"/>
+    </record>
+
+    <record id="user_manager_installations" model="res.users">
+        <field name="name">Manager Instalaciones</field>
+        <field name="login">manager.instalaciones@example.com</field>
+    </record>
+
+    <record id="employee_manager_installations" model="hr.employee">
+        <field name="name">Manager Instalaciones</field>
+        <field name="user_id" ref="user_manager_installations"/>
+        <field name="department_id" ref="dept_installations"/>
+    </record>
+
+    <!--Empleados demo para pruebas de teletrabajo-->
+
+    <!-- Empleado Ventas -->
+    <record id="user_employee_sales" model="res.users">
+        <field name="name">Empleado Ventas</field>
+        <field name="login">empleado.ventas@example.com</field>
+    </record>
+
+    <record id="employee_sales" model="hr.employee">
+        <field name="name">Empleado Ventas</field>
+        <field name="user_id" ref="user_employee_sales"/>
+        <field name="department_id" ref="dept_sales"/>
+    </record>
+
+    <!-- Empleado Almacén -->
+    <record id="user_employee_warehouse" model="res.users">
+        <field name="name">Empleado Almacén</field>
+        <field name="login">empleado.almacen@example.com</field>
+    </record>
+
+    <record id="employee_warehouse" model="hr.employee">
+        <field name="name">Empleado Almacén</field>
+        <field name="user_id" ref="user_employee_warehouse"/>
+        <field name="department_id" ref="dept_warehouse"/>
+    </record>
+
+    <!-- Empleado Instalaciones -->
+    <record id="user_employee_installations" model="res.users">
+        <field name="name">Empleado Instalaciones</field>
+        <field name="login">empleado.instalaciones@example.com</field>
+    </record>
+
+    <record id="employee_installations" model="hr.employee">
+        <field name="name">Empleado Instalaciones</field>
+        <field name="user_id" ref="user_employee_installations"/>
+        <field name="department_id" ref="dept_installations"/>
+    </record>
+
+</odoo>

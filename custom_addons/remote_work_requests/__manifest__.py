@@ -8,6 +8,8 @@
     "icon": "remote_work_requests/static/description/icon.png",
     "depends": ["base", "hr"],
     "data": [
+        "security/ir.model.access.csv",
+        "data/hr_demo.xml",
         "views/remote_request_view.xml",
     ],
     "application": True,
