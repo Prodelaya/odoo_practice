@@ -1,7 +1,6 @@
 # remote_work_requests/controllers/main.py
 
-import json
-
+import json  # noqa: I001
 from odoo import http
 from odoo.http import request
 
