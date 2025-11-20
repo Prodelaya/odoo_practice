@@ -93,3 +93,34 @@ class RemoteWorkRequest(models.Model):
                 raise ValidationError(
                     _("La fecha de fin no puede ser anterior a la fecha de inicio.")
                 )
+
+    def action_submit(self):
+        """Envía la solicitud para revisión."""
+        for request in self:
+            if request.state != "draft":
+                raise ValidationError(
+                    _("Solo se pueden enviar solicitudes en estado Borrador.")
+                )
+            request.state = "in_review"
+
+    def action_approve(self):
+        """Aprobar la solicitud y fijar la fecha de resolución."""
+        today = fields.Date.context_today(self)
+        for request in self:
+            if request.state != "in_review":
+                raise ValidationError(
+                    _("Solo se pueden aprobar solicitudes en estado En revisión.")
+                )
+            request.state = "approved"
+            request.resolution_date = today
+
+    def action_reject(self):
+        """Rechazar la solicitud y fijar la fecha de resolución."""
+        today = fields.Date.context_today(self)
+        for request in self:
+            if request.state != "in_review":
+                raise ValidationError(
+                    _("Solo se pueden rechazar solicitudes en estado En revisión.")
+                )
+            request.state = "rejected"
+            request.resolution_date = today
