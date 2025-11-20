@@ -7,10 +7,17 @@
     <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Menú -->
-    <menuitem id="menu_remote_root" name="Trabajo Remoto"/>
-    <menuitem id="menu_remote_requests" parent="menu_remote_root" name="Solicitudes" action="action_remote_requests"/>
+    <!-- Menú principal bajo Empleados -->
+    <menuitem id="menu_remote_root"
+              name="Trabajo Remoto"
+              parent="hr.menu_hr_root"
+              sequence="50"/>
 
+    <!-- Submenú de solicitudes -->
+    <menuitem id="menu_remote_requests"
+              parent="menu_remote_root"
+              name="Solicitudes"
+              action="action_remote_requests"/>
 
     <!-- Vista de formulario -->
     <record id="view_remote_request_form" model="ir.ui.view">
@@ -19,27 +26,28 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                <!-- Botón Enviar: solo en borrador -->
-                <button name="action_submit"
-                        type="object"
-                        string="Enviar"
-                        class="btn-primary"
-                        attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <!-- Botón Enviar: solo en borrador -->
+                    <button name="action_submit"
+                            type="object"
+                            string="Enviar"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
 
-                <!-- Botón Aprobar: solo en revisión -->
-                <button name="action_approve"
-                        type="object"
-                        string="Aprobar"
-                        class="btn-success"
-                        attrs="{'invisible': [('state', '!=', 'in_review')]}"/>
+                    <!-- Botón Aprobar: solo en revisión -->
+                    <button name="action_approve"
+                            type="object"
+                            string="Aprobar"
+                            class="btn-success"
+                            invisible="state != 'in_review'"/>
 
                     <!-- Botón Rechazar: solo en revisión -->
                     <button name="action_reject"
-                        type="object"
-                        string="Rechazar"
-                        class="btn-danger"
-                        attrs="{'invisible': [('state', '!=', 'in_review')]}"/>
+                            type="object"
+                            string="Rechazar"
+                            class="btn-danger"
+                            invisible="state != 'in_review'"/>
                 </header>
+
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -77,6 +85,50 @@
                 <field name="state"/>
                 <field name="approver_id"/>
             </list>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda para solicitudes de trabajo remoto -->
+    <record id="view_remote_work_request_search" model="ir.ui.view">
+        <field name="name">remote.work.request.search</field>
+        <field name="model">remote.work.request</field>
+        <field name="arch" type="xml">
+            <search string="Solicitudes de trabajo remoto">
+                <!-- Búsquedas por campos básicos -->
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="approver_id"/>
+
+                <!-- Filtros por estado -->
+                <filter name="state_draft"
+                        string="Borrador"
+                        domain="[('state', '=', 'draft')]"/>
+                <filter name="state_in_review"
+                        string="En revisión"
+                        domain="[('state', '=', 'in_review')]"/>
+                <filter name="state_approved"
+                        string="Aprobadas"
+                        domain="[('state', '=', 'approved')]"/>
+                <filter name="state_rejected"
+                        string="Rechazadas"
+                        domain="[('state', '=', 'rejected')]"/>
+
+                <!-- Mis solicitudes (yo como solicitante) -->
+                <filter name="my_requests"
+                        string="Mis solicitudes"
+                        domain="[('user_id', '=', uid)]"/>
+
+                <!-- Solicitudes asignadas al aprobador logueado (todos los estados) -->
+                <filter name="assigned_to_me"
+                        string="Asignadas a mí"
+                        domain="[('approver_id', '=', uid)]"/>
+
+                <!-- Solo las que están pendientes de revisar para mí, como revisor -->
+                <filter name="pending_review_for_me"
+                        string="Pendientes de revisar"
+                        domain="[('approver_id', '=', uid), ('state', '=', 'in_review')]"/>
+
+            </search>
         </field>
     </record>
 
