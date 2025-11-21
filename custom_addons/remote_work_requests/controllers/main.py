@@ -11,7 +11,7 @@ class RemoteWorkApprovedController(http.Controller):
     @http.route(
         "/remote_work/approved_requests",
         type="http",
-        auth="user",
+        auth="public",
         methods=["GET"],
         csrf=False,
     )
@@ -20,7 +20,7 @@ class RemoteWorkApprovedController(http.Controller):
 
         Pensado como endopoint simple para demo / integración interna
         """
-        RemoteRequest = request.env["remote.work.request"]
+        RemoteRequest = request.env["remote.work.request"].sudo()
 
         # 1) Buscar solo las solicitudes en estado 'approved'
         approved_requests = RemoteRequest.search([("state", "=", "approved")])
