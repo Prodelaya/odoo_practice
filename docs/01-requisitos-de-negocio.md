@@ -133,26 +133,21 @@ in_review --(Rechazar)------> rejected
 - No se gestionan conflictos complejos de calendario en v1.
 - No hay aprobación multinivel en v1.
 
-## 17. Riesgos (y mitigación)
-- **Contraseñas con caracteres especiales** → usar ASCII si hay problemas de codificación.
-- **Solapamiento con vacaciones/ausencias** → fuera de v1; aclarar en alcance.
-- **Carga por API pública** → limitar o exigir autenticación en v1.1 si se detecta necesidad.
-
-## 18. Entregables
+## 17. Entregables
 - Código del addon en `custom_addons/remote_work_requests/`.
 - Orquestación Docker + configuración (`docker/compose.yaml`, `.env.example`, `odoo.conf.example`).
 - Documentación en `docs/` (requisitos, arquitectura, diseño funcional, API, pruebas).
 
-## 19. Plan de validación (manual)
+## 18. Plan de validación (manual)
 1. Arranque del entorno (Docker) y creación de BD de desarrollo.
 2. Instalación del addon desde Apps.
 3. Caso feliz: crear → enviar a revisión → aprobar.
 4. Caso alternativo: crear → enviar a revisión → rechazar.
 5. Validación de restricciones (fechas) y cálculo de días.
 6. Verificación de permisos (usuario vs responsable).
-7. Consumo del endpoint `/api/remote-work/approved` y verificación de formato.
+7. Consumo del endpoint `/api/remote_work/approved_requests` y verificación de formato.
 
-## 20. Futuras mejoras (backlog)
+## 19. Futuras mejoras (backlog)
 - Notificaciones por email y chatter.
 - Integración con calendario y festivos.
 - Dashboard con métricas y gráficos.
