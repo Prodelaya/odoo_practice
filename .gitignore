@@ -10,3 +10,4 @@ docker/.env
 .env
 docker/odoo.conf
 .ruff_cache/
+.CLAUDE.md
