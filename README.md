@@ -1,6 +1,6 @@
 # Odoo 19 – Entorno de práctica (WSL + Docker) y addon “Remote Work Requests”
 
-Práctica guiada con **Odoo 19** sobre **WSL + Docker**: orquestación mínima (Odoo + PostgreSQL), carpeta de `custom_addons/` y desarrollo de un addon real (**Remote Work Requests**) con modelos, vistas, permisos y un endpoint JSON.
+Práctica con **Odoo 19** sobre **WSL + Docker**: orquestación mínima (Odoo + PostgreSQL), carpeta de `custom_addons/` y desarrollo de un addon real (**Remote Work Requests**) con modelos, vistas, permisos y un endpoint JSON.
 
 ---
 
@@ -17,6 +17,11 @@ Práctica guiada con **Odoo 19** sobre **WSL + Docker**: orquestación mínima (
   - [Arranque](#arranque)
   - [Verificación rápida](#verificación-rápida)
   - [Addon de ejemplo: Remote Work Requests](#addon-de-ejemplo-remote-work-requests)
+    - [Características principales](#características-principales)
+    - [Documentación completa](#documentación-completa)
+    - [Inicio rápido](#inicio-rápido)
+    - [Ejecutar tests](#ejecutar-tests)
+    - [Capturas de pantalla](#capturas-de-pantalla)
   - [Comandos útiles](#comandos-útiles)
   - [Solución de problemas](#solución-de-problemas)
   - [Buenas prácticas](#buenas-prácticas)
@@ -152,13 +157,100 @@ Cuando todo esté en marcha, abre:
 ---
 
 ## Addon de ejemplo: Remote Work Requests
-- **Qué hace**: gestiona solicitudes de teletrabajo (empleado, fechas inicio/fin, motivo, estado `borrador → revisión → aprobada/rechazada`, días calculados, responsable y fecha de resolución).
-- **Vistas**: lista y formulario (opcional kanban), filtros (estado, responsable, “Mis solicitudes”).
-- **Lógica**: validaciones de fechas, acciones de transición, cálculo de días.
-- **API**: endpoint JSON para listar solicitudes **aprobadas** (opcional autenticación).
-- **Seguridad**: grupos básicos (usuario normal vs responsable), access/record rules.
 
-> El desarrollo del addon se realiza en `custom_addons/remote_work_requests/`. Odoo lo “ve” porque montamos `custom_addons/` como `/mnt/extra-addons` en el contenedor.
+**Descripción:** Sistema completo de gestión de solicitudes de teletrabajo con flujo de aprobación.
+
+### Características principales
+- **Modelo de datos**: Solicitudes con empleado, fechas, motivo, estado y cálculo automático de días
+- **Flujo de estados**: `borrador → revisión → aprobada/rechazada`
+- **Vistas**: Lista, formulario, kanban y búsqueda con filtros contextuales
+- **Lógica de negocio**: Validaciones de fechas, acciones de transición, campos computados
+- **API REST**: Endpoint JSON para consultar solicitudes aprobadas
+- **Seguridad**:
+  - Grupos: Empleado (crear propias) y Manager (aprobar asignadas)
+  - Record rules: RLS (Row-Level Security)
+  - ACL: Permisos CRUD por grupo
+- **Suite de tests**: 45 tests automatizados (100% passing)
+  - Tests de modelo (validaciones, cálculos, constraints)
+  - Tests de workflow (transiciones de estado)
+  - Tests de seguridad (permisos, aislamiento)
+  - Tests de API (endpoint HTTP JSON)
+
+### Documentación completa
+
+El proyecto incluye documentación profesional y exhaustiva:
+
+| Documento | Descripción | Audiencia |
+|-----------|-------------|-----------|
+| **[01-requisitos-de-negocio.md](docs/01-requisitos-de-negocio.md)** | Requisitos funcionales y no funcionales del sistema | Product Owners, Stakeholders |
+| **[02-arquitectura-tecnica.md](docs/02-arquitectura-tecnica.md)** | Arquitectura del sistema, componentes, modelo de datos, decisiones de diseño | Arquitectos, Desarrolladores Senior |
+| **[03-diseno-funcional.md](docs/03-diseno-funcional.md)** | Casos de uso, flujos de trabajo, especificación de pantallas, reglas de negocio | Analistas Funcionales, QA |
+| **[04-api-specification.md](docs/04-api-specification.md)** | Especificación OpenAPI del endpoint REST, ejemplos de consumo | Desarrolladores de integraciones |
+| **[05-manual-de-usuario.md](docs/05-manual-de-usuario.md)** | Guía paso a paso para empleados y managers | Usuarios finales |
+| **[tests-recomendados.md](docs/tests-recomendados.md)** | Plan de testing completo | QA Engineers, Desarrolladores |
+| **[tests-realizados.md](docs/tests-realizados.md)** | Estado de implementación de testing | QA Engineers, Desarrolladores |
+
+### Inicio rápido
+
+1. **Instalación del módulo:**
+   ```bash
+   cd docker
+   docker compose up -d
+   ```
+
+2. **Acceder a Odoo:**
+   - URL: http://localhost:8069
+   - Activar **Modo Desarrollador**
+   - **Apps → Actualizar lista de aplicaciones**
+   - Buscar "Remote Work Requests" e instalar
+
+3. **Configurar permisos:**
+   - **Configuración → Usuarios**
+   - Asignar grupos:
+     - `Empleado - Solicitar Teletrabajo` (para usuarios normales)
+     - `Gerente - Gestionar Solicitudes` (para managers)
+
+4. **Probar el sistema:**
+   - **Empleado**: Trabajo Remoto → Solicitudes → Crear
+   - **Manager**: Trabajo Remoto → Solicitudes → Filtro "Pendientes de revisar"
+
+5. **Consumir el API:**
+   ```bash
+   curl -X GET "http://localhost:8069/remote_work/approved_requests"
+   ```
+
+### Ejecutar tests
+
+```bash
+cd docker
+docker compose run --rm odoo odoo --test-enable --stop-after-init \
+  -d odoo_db -u remote_work_requests
+```
+
+**Resultado esperado:**
+```
+41 post-tests in 3.36s, 2110 queries
+0 failed, 0 error(s) of 41 tests
+```
+
+### Capturas de pantalla
+
+El proyecto incluye 12 capturas de pantalla documentando la interfaz:
+
+- `assets/01-screenshot-apps-gallery.jpg` - Galería de apps
+- `assets/02-screenshot-app-info.jpg` - Información del módulo
+- `assets/03-screenshot-app-view.jpg` - Vista general
+- `assets/04-screenshot-app-form.jpg` - Formulario de solicitud
+- `assets/05-screenshot-app-list.jpg` - Vista de lista
+- `assets/06-screenshot-app-buttons.jpg` - Botones de acción por estado
+- `assets/07-screenshot-app-filters.jpg` - Filtros de búsqueda
+- `assets/08-screenshot-app-only-own-user-requests.jpg` - Vista empleado (aislamiento)
+- `assets/09-screenshot-app-groups-permissions.jpg` - Configuración de permisos
+- `assets/10-screenshot-app-only-to-approver-user-requests.jpg` - Vista manager
+- `assets/11-screenshot-app-state-colors.jpg` - Colorización por estado
+- `assets/12-screenshot-app-kanban-view.jpg` - Vista Kanban
+
+> El desarrollo del addon se realiza en `custom_addons/remote_work_requests/`. Odoo lo "ve" porque montamos `custom_addons/` como `/mnt/extra-addons` en el contenedor.
 
 ---
 
