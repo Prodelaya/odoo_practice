@@ -3,7 +3,7 @@
 **Proyecto:** Sistema de Gestión de Solicitudes de Teletrabajo
 **Versión del documento:** 1.0
 **Fecha:** 21 de noviembre de 2025
-**Autor:** Pablo Rodríguez
+**Autor:** Pablo Laya
 
 ---
 
@@ -1884,4 +1884,4 @@ LIMIT 10;
 
 | Versión | Fecha | Autor | Cambios |
 |---------|-------|-------|---------|
-| 1.0 | 2025-11-21 | Pablo Rodríguez | Versión inicial |
+| 1.0 | 2025-11-21 | Pablo Laya | Versión inicial |
