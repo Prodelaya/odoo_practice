@@ -57,7 +57,6 @@ Remote Work Requests es un sistema integrado en Odoo que permite gestionar las s
    - **Email:** tu correo corporativo
    - **Contraseña:** tu contraseña de Odoo
 
-![Pantalla de login](../assets/01-screenshot-apps-gallery.jpg)
 
 ### 2.2 Acceder al Módulo
 
@@ -67,7 +66,7 @@ Una vez dentro de Odoo:
 2. En la galería de aplicaciones, busca **"Remote Work Requests"** o **"Trabajo Remoto"**
 3. Haz clic en el icono para abrir el módulo
 
-![Galería de aplicaciones](custom_addons/remote_work_requests/assets/01-screenshot-apps-gallery.jpg)
+![Galería de aplicaciones](../custom_addons/remote_work_requests/assets/01-screenshot-apps-gallery.jpg)
 
 **Tip:** Puedes marcar la aplicación como favorita para acceso rápido.
 
@@ -82,14 +81,14 @@ Una vez dentro de Odoo:
 1. Abre el módulo **"Trabajo Remoto"** desde el menú principal
 2. Haz clic en **"Solicitudes"** en el submenú
 
-![Vista de navegación](../assets/03-screenshot-app-view.jpg)
+![Vista de navegación](../custom_addons/remote_work_requests/assets/03-screenshot-app-view.jpg)
 
 #### Paso 2: Iniciar Creación
 
 1. En la vista de lista, haz clic en el botón **"Crear"** (esquina superior izquierda)
 2. Se abrirá un formulario en blanco
 
-![Vista de lista](../assets/05-screenshot-app-list.jpg)
+![Vista de lista](../custom_addons/remote_work_requests/assets/05-screenshot-app-list.jpg)
 
 #### Paso 3: Rellenar el Formulario
 
@@ -109,7 +108,7 @@ Una vez dentro de Odoo:
 |-------|-------------|
 | **Aprobador** | Manager que revisará (si lo sabes) |
 
-![Formulario de solicitud](../assets/04-screenshot-app-form.jpg)
+![Formulario de solicitud](../custom_addons/remote_work_requests/assets/04-screenshot-app-form.jpg)
 
 **Importante:**
 - La **Fecha fin** no puede ser anterior a la **Fecha inicio**
@@ -144,7 +143,7 @@ Una vez creada la solicitud y verificados los datos:
 2. El sistema cambiará el estado a **"En revisión"**
 3. Recibirás un mensaje de confirmación
 
-![Botones de acción](../assets/06-screenshot-app-buttons.jpg)
+![Botones de acción](../custom_addons/remote_work_requests/assets/06-screenshot-app-buttons.jpg)
 
 **¿Qué ocurre al enviar?**
 - ✓ Estado cambia a "En revisión"
@@ -168,7 +167,7 @@ Una vez creada la solicitud y verificados los datos:
    - **Aprobadas:** Solicitudes autorizadas
    - **Rechazadas:** Solicitudes denegadas
 
-![Filtros de búsqueda](../assets/07-screenshot-app-filters.jpg)
+![Filtros de búsqueda](../custom_addons/remote_work_requests/assets/07-screenshot-app-filters.jpg)
 
 #### Interpretar Colores
 
@@ -181,7 +180,7 @@ La lista usa colores para identificar rápidamente el estado:
 | **Verde** | Aprobada | Autorizada por el manager |
 | **Rojo** | Rechazada | Denegada por el manager |
 
-![Colores de estado](../assets/11-screenshot-app-state-colors.jpg)
+![Colores de estado](../custom_addons/remote_work_requests/assets/11-screenshot-app-state-colors.jpg)
 
 ---
 
@@ -196,7 +195,7 @@ Mostrar solo solicitudes donde: Empleado = Yo
 
 No verás solicitudes de otros compañeros.
 
-![Vista de empleado](../assets/08-screenshot-app-only-own-user-requests.jpg)
+![Vista de empleado](../custom_addons/remote_work_requests/assets/08-screenshot-app-only-own-user-requests.jpg)
 
 ---
 
@@ -253,7 +252,7 @@ Como manager, solo ves solicitudes donde eres el **aprobador asignado**.
    Mostrar solo solicitudes donde: Aprobador = Yo
    ```
 
-![Vista de manager](../assets/10-screenshot-app-only-to-approver-user-requests.jpg)
+![Vista de manager](../custom_addons/remote_work_requests/assets/10-screenshot-app-only-to-approver-user-requests.jpg)
 
 #### Filtro "Pendientes de Revisar"
 
@@ -311,7 +310,7 @@ Si decides **autorizar** la solicitud:
    - Fecha de resolución → Hoy
 3. Verás un mensaje de confirmación
 
-![Botones de manager](../assets/06-screenshot-app-buttons.jpg)
+![Botones de manager](../custom_addons/remote_work_requests/assets/06-screenshot-app-buttons.jpg)
 
 **Resultado:**
 - ✓ Solicitud marcada como aprobada
@@ -387,7 +386,7 @@ Para una visión más visual del pipeline de solicitudes:
    - Aprobada
    - Rechazada
 
-![Vista Kanban](../assets/12-screenshot-app-kanban-view.jpg)
+![Vista Kanban](../custom_addons/remote_work_requests/assets/12-screenshot-app-kanban-view.jpg)
 
 #### Ventajas
 
