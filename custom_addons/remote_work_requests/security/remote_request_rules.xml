@@ -1,0 +1,23 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Regla 1: Los empleados solo ven sus propias solicitudes -->
+        <record id="rule_remote_request_employee_own" model="ir.rule">
+            <field name="name">Remote Requests: Employee Own Records</field>
+            <field name="model_id" ref="model_remote_work_request"/>
+            <field name="groups" eval="[(4, ref('remote_work_requests.group_remote_work_request_employee'))]"/>
+            <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+        </record>
+
+        <!-- Regla 2: Los gerentes ven solo las solicitudes donde son aprobadores -->
+        <record id="rule_remote_request_manager_all" model="ir.rule">
+            <field name="name">Remote Requests: Manager Approver Records</field>
+            <field name="model_id" ref="model_remote_work_request"/>
+            <field name="groups" eval="[(4, ref('remote_work_requests.group_remote_work_request_manager'))]"/>
+            <field name="domain_force">[('approver_id', '=', user.id)]</field>
+        </record>
+
+
+
+    </data>
+</odoo>

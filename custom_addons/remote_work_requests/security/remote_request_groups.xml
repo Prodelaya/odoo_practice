@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="1"> <!-- No sobrescribir permisos si se actualiza el módulo -->
+
+        <!-- Grupo para empleados que pueden solicitar teletrabajo -->
+        <record id="group_remote_work_request_employee" model="res.groups">
+            <field name="name">Empleado - Solicitar Teletrabajo</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+
+        <!-- Grupo para responsables que pueden aprobar o rechazar -->
+        <record id="group_remote_work_request_manager" model="res.groups">
+            <field name="name">Gerente - Gestionar Solicitudes de Teletrabajo</field>
+            <!-- Ojo: solo implicamos base.group_user, ya no al grupo de empleado -->
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+
+    </data>
+</odoo>
