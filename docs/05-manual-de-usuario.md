@@ -85,7 +85,7 @@ Una vez dentro de Odoo:
 
 #### Paso 2: Iniciar Creación
 
-1. En la vista de lista, haz clic en el botón **"Crear"** (esquina superior izquierda)
+1. En la vista de lista, haz clic en el botón **"Nuevo"** (esquina superior izquierda)
 2. Se abrirá un formulario en blanco
 
 ![Vista de lista](../custom_addons/remote_work_requests/assets/05-screenshot-app-list.jpg)
