@@ -4,7 +4,7 @@
     <record id="action_remote_requests" model="ir.actions.act_window">
     <field name="name">Solicitudes</field>
     <field name="res_model">remote.work.request</field>
-    <field name="view_mode">list,form</field>
+    <field name="view_mode">list,kanban,form</field>
     </record>
 
     <!-- Menú principal bajo Empleados -->
@@ -75,7 +75,11 @@
         <field name="name">remote.request.list</field>
         <field name="model">remote.work.request</field>
         <field name="arch" type="xml">
-            <list>
+            <list
+                decoration-muted="state == 'draft'"
+                decoration-info="state == 'in_review'"
+                decoration-success="state == 'approved'"
+                decoration-danger="state == 'rejected'">
                 <field name="name"/>
                 <field name="employee_id"/>
                 <field name="request_date"/>
@@ -87,6 +91,54 @@
             </list>
         </field>
     </record>
+
+    <!-- Vista kanban básica -->
+    <record id="view_remote_request_kanban" model="ir.ui.view">
+        <field name="name">remote.request.kanban</field>
+        <field name="model">remote.work.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <!-- Campos disponibles para la vista -->
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="request_date"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="days_count"/>
+                <field name="state"/>
+                <field name="approver_id"/>
+
+                <templates>
+                    <!-- Plantilla OBLIGATORIA en Odoo nuevo: t-name="card" -->
+                    <t t-name="card">
+                        <div class="o_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_primary_left">
+                                <strong><field name="name"/></strong>
+                                <div>
+                                    <field name="employee_id"/>
+                                </div>
+                                <div>
+                                    <field name="date_start"/> - <field name="date_end"/>
+                                </div>
+                                <div>
+                                    <field name="days_count"/> días
+                                </div>
+                            </div>
+                            <div class="o_kanban_primary_right">
+                                <div>
+                                    Estado: <field name="state"/>
+                                </div>
+                                <div>
+                                    Aprobador: <field name="approver_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 
     <!-- Vista de búsqueda para solicitudes de trabajo remoto -->
     <record id="view_remote_work_request_search" model="ir.ui.view">
