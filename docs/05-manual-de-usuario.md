@@ -67,7 +67,7 @@ Una vez dentro de Odoo:
 2. En la galería de aplicaciones, busca **"Remote Work Requests"** o **"Trabajo Remoto"**
 3. Haz clic en el icono para abrir el módulo
 
-![Galería de aplicaciones](../assets/02-screenshot-app-info.jpg)
+![Galería de aplicaciones](custom_addons/remote_work_requests/assets/01-screenshot-apps-gallery.jpg)
 
 **Tip:** Puedes marcar la aplicación como favorita para acceso rápido.
 
