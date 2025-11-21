@@ -4,7 +4,7 @@
 **Versión del API:** 1.0
 **Versión del documento:** 1.0
 **Fecha:** 21 de noviembre de 2025
-**Autor:** Pablo Rodríguez
+**Autor:** Pablo Laya
 
 ---
 
@@ -1058,7 +1058,7 @@ info:
   description: API para consultar solicitudes de teletrabajo aprobadas
   version: 1.0.0
   contact:
-    name: Pablo Rodríguez
+    name: Pablo Laya
     email: admin@empresa.com
 
 servers:
@@ -1212,4 +1212,4 @@ components:
 
 | Versión | Fecha | Autor | Cambios |
 |---------|-------|-------|---------|
-| 1.0 | 2025-11-21 | Pablo Rodríguez | Versión inicial del API v1.0 |
+| 1.0 | 2025-11-21 | Pablo Laya | Versión inicial del API v1.0 |
