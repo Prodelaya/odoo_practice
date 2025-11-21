@@ -4,7 +4,7 @@
 **Versión del sistema:** 1.0
 **Versión del documento:** 1.0
 **Fecha:** 21 de noviembre de 2025
-**Autor:** Pablo Rodríguez
+**Autor:** Pablo Laya
 
 ---
 
@@ -805,10 +805,4 @@ Para una visión más visual del pipeline de solicitudes:
 
 | Versión | Fecha | Autor | Cambios |
 |---------|-------|-------|---------|
-| 1.0 | 2025-11-21 | Pablo Rodríguez | Versión inicial |
-
----
-
-**¿Tienes preguntas o sugerencias sobre este manual?**
-
-Envíanos un email a: documentacion@empresa.com
+| 1.0 | 2025-11-21 | Pablo Laya | Versión inicial |
