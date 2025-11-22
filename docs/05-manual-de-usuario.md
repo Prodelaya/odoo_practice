@@ -92,7 +92,7 @@ Una vez dentro de Odoo:
 
 #### Paso 3: Rellenar el Formulario
 
-**Campos obligatorios (marcados con *):**
+**Campos obligatorios:**
 
 | Campo | Descripción | Ejemplo |
 |-------|-------------|---------|
